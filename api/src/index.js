@@ -2,14 +2,19 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const path = require('path');
+
 
 // Import all routes
 const authRoute = require('./routes/auth.route');
 const categoryRoute = require('./routes/category.route');
+const productRoute = require('./routes/product.route');
 
 
 // define the objects to the app
 const app = express();
+
+app.use("/public", express.static(path.join(__dirname, 'public')));
 
 // allow the app to use json
 app.use(express.json());
@@ -17,6 +22,7 @@ app.use(express.json());
 // use all routes
 app.use('/api/v1/user', authRoute);
 app.use('/api/v1/category', categoryRoute);
+app.use('/api/v1/product', productRoute);
 
 // init the env file
 dotenv.config();
@@ -43,4 +49,4 @@ app.use((req, res) => {
 
 // Let the app listen to port
 const port = process.env.PORT
-app.listen(port, () => console.log(`Server up and running and listening on port ${port}.`));
+let server = app.listen(port, '0.0.0.0', () => console.log(`Server up and running and listening on port ${port}.`));
