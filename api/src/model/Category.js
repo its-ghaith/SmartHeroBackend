@@ -4,13 +4,13 @@
 
 const mongoose = require('mongoose');
 
-// design the user collection on the database
+// design the category collection on the database
 const categorySchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
         trim: true,
-        max: 32,
+        maxlength: 32,
         unique: true
     },
 }, {timestamps: true});

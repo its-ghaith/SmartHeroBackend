@@ -11,13 +11,13 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         min: 2,
-        max: 26
+        maxlength: 26
     },
     last_name: {
         type: String,
         required: true,
         min: 2,
-        max: 26
+        maxlength: 26
     },
     email: {
         type: String,
@@ -36,7 +36,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         min: 6,
-        max: 1024
+        maxlength: 1024
     },
     avatar: { // User image
         type: String,
